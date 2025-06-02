@@ -30,3 +30,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+
+
+
