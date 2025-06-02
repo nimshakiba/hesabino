@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+body {
+    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+    background: #f7fafc;
+    margin: 0;
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #2563eb;
+}
+
+header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.hero-bg {
+    background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+}
+
+.shadow-xl {
+    box-shadow: 0 10px 40px rgba(37,99,235,0.08);
+}
+
+.bg-white {
+    background: #fff;
+}
+
+.bg-blue-50 {
+    background: #eff6ff;
+}
+
+.bg-blue-700 {
+    background: #2563eb;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-blue-700 {
+    color: #2563eb;
+}
+
+.text-gray-800 {
+    color: #222;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.rounded-lg {
+    border-radius: 1rem;
+}
+
+.rounded-xl {
+    border-radius: 1.5rem;
+}
+
+.shadow {
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+.hover\:bg-blue-800:hover {
+    background: #1e40af;
+}
+
+.hover\:bg-blue-100:hover {
+    background: #dbeafe;
+}
+
+.hover\:shadow-lg:hover {
+    box-shadow: 0 4px 24px rgba(37,99,235,0.15);
+}
+
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-10 { margin-bottom: 2.5rem; }
+.mb-12 { margin-bottom: 3rem; }
+
+.mt-2 { margin-top: 0.5rem; }
+.mt-10 { margin-top: 2.5rem; }
+.mt-12 { margin-top: 3rem; }
+
+.ml-3 { margin-left: 0.75rem; }
+.block { display: block; }
+.hidden { display: none; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.space-x-4 > *:not(:last-child) { margin-left: 1rem; }
+.space-x-6 > *:not(:last-child) { margin-left: 1.5rem; }
+.space-x-reverse { direction: rtl; }
+
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gap-8 { gap: 2rem; }
+
+@media (min-width: 640px) {
+    .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) {
+    .md\:flex-row { flex-direction: row; }
+    .md\:flex { display: flex; }
+    .md\:w-1\/2 { width: 50%; }
+    .md\:mb-0 { margin-bottom: 0; }
+    .md\:text-5xl { font-size: 3rem; }
+    .md\:text-xl { font-size: 1.25rem; }
+    .md\:text-3xl { font-size: 1.875rem; }
+    .md\:text-3xl { font-size: 1.875rem; }
+    .md\:text-xl { font-size: 1.25rem; }
+    .md\:mb-0 { margin-bottom: 0; }
+    .md\:mb-12 { margin-bottom: 3rem; }
+    .md\:flex-row { flex-direction: row; }
+}
+
+@media (max-width: 768px) {
+    .md\:w-1\/2 { width: 100%; }
+    .hidden.md\:flex { display: none; }
+}
+
+input, button, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+button, .btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 2rem;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+button:hover, .btn:hover {
+    background: #1e40af;
+}
+
+footer {
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+    color: #6b7280;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+.selection\:bg-blue-200::selection {
+    background: #bfdbfe;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
