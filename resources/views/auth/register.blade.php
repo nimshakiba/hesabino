@@ -1,60 +1,38 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
-
-        <x-validation-errors class="mb-4" />
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌نام | حسابینو</title>
+    <link rel="stylesheet" href="{{ asset('assets/fonts/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+</head>
+<body>
+    <div class="container mt-6">
+        <a href="/" style="text-align:center;display:block;"><img src="{{ asset('assets/img/logo.svg') }}" alt="حسابینو" style="height:56px; margin:0 auto 1.5rem auto;"></a>
+        <h1 class="form-title">ایجاد حساب کاربری جدید</h1>
+        @if($errors->any())
+            <div class="error-message">
+                @foreach($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
-            <div>
-                <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-label for="terms">
-                        <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
-
-                            <div class="ms-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-label>
-                </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ms-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
+            <input type="text" name="name" placeholder="نام کامل" value="{{ old('name') }}" required autocomplete="name">
+            <input type="email" name="email" placeholder="ایمیل" value="{{ old('email') }}" required autocomplete="email">
+            <input type="password" name="password" placeholder="رمز عبور" required autocomplete="new-password">
+            <input type="password" name="password_confirmation" placeholder="تکرار رمز عبور" required autocomplete="new-password">
+            <button type="submit" class="btn w-full">ثبت‌نام</button>
         </form>
-    </x-authentication-card>
-</x-guest-layout>
+        <div class="form-note mt-4">
+            قبلاً ثبت‌نام کرده‌اید؟ <a href="{{ route('login') }}" class="form-link">ورود به حساب کاربری</a>
+        </div>
+        <div style="margin-top:2rem;text-align:center;">
+            <a href="/" class="form-link">بازگشت به صفحه اصلی</a>
+        </div>
+    </div>
+</body>
+</html>

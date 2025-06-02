@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+@import url('/assets/fonts/fonts.css');
 
 body {
-    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+    font-family: 'AnjomanMax', Arial, Tahoma, sans-serif;
     background: #f7fafc;
     margin: 0;
     color: #222;
