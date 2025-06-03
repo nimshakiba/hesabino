@@ -30,23 +30,22 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/persons/{person}/toggle-active', [PersonController::class, 'toggleActive'])->name('persons.toggle-active');
 });
 
+
 Route::middleware(['auth'])->group(function () {
-    // روت داشبورد کاربر عادی
     Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
 
-    // روت‌های اشخاص
+    // اشخاص
     Route::get('/persons', [PersonController::class, 'index'])->name('persons.index');
     Route::get('/persons/create', [PersonController::class, 'create'])->name('persons.create');
     Route::post('/persons', [PersonController::class, 'store'])->name('persons.store');
     Route::post('/persons/{person}/toggle-active', [PersonController::class, 'toggleActive'])->name('persons.toggle-active');
 
-    // --- روت‌های ادمین ---
-    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
+    // AJAX: دریافت دسته‌بندی‌های اشخاص
+    Route::get('/ajax/person-categories', [PersonCategoryController::class, 'listAjax'])->name('ajax.person_categories');
 
-        Route::get('/users', [UserController::class, 'index'])->name('users.index');
-        // روت‌های دیگر مدیریتی...
+    // روت‌های ادمین...
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', function () { return view('admin.dashboard'); })->name('dashboard');
+        // ...
     });
 });
