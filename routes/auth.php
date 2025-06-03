@@ -1,35 +1,28 @@
 <?php
 
-use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
 
-Route::middleware('guest')->group(function () {
-    Volt::route('login', 'auth.login')
-        ->name('login');
+// نمایش فرم ثبت‌نام
+Route::get('register', [RegisteredUserController::class, 'create'])
+                ->middleware('guest')
+                ->name('register');
 
-    Volt::route('register', 'auth.register')
-        ->name('register');
+// ثبت اطلاعات ثبت‌نام
+Route::post('register', [RegisteredUserController::class, 'store'])
+                ->middleware('guest');
 
-    Volt::route('forgot-password', 'auth.forgot-password')
-        ->name('password.request');
+// نمایش فرم ورود
+Route::get('login', [AuthenticatedSessionController::class, 'create'])
+                ->middleware('guest')
+                ->name('login');
 
-    Volt::route('reset-password/{token}', 'auth.reset-password')
-        ->name('password.reset');
+// پردازش ورود
+Route::post('login', [AuthenticatedSessionController::class, 'store'])
+                ->middleware('guest');
 
-});
-
-Route::middleware('auth')->group(function () {
-    Volt::route('verify-email', 'auth.verify-email')
-        ->name('verification.notice');
-
-    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-        ->middleware(['signed', 'throttle:6,1'])
-        ->name('verification.verify');
-
-    Volt::route('confirm-password', 'auth.confirm-password')
-        ->name('password.confirm');
-});
-
-Route::post('logout', App\Livewire\Actions\Logout::class)
-    ->name('logout');
+// خروج از حساب
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+                ->middleware('auth')
+                ->name('logout');
