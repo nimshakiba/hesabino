@@ -7,48 +7,49 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    // لیست دسته‌بندی‌ها با همه زیرشاخه‌ها
-    public function index(Request $request)
+    public function index()
     {
-        $type = $request->query('type');
-        $query = Category::query();
-        if ($type) {
-            $query->where('type', $type);
-        }
-        $categories = $query->whereNull('parent_id')
-            ->with('childrenRecursive')
-            ->orderBy('id', 'desc')
+        $categories = Category::with('childrenRecursive')
+            ->whereNull('parent_id')
+            ->orderByDesc('id')
             ->get();
-        return response()->json($categories);
+        return view('categories.index', compact('categories'));
     }
 
-    // ساخت دسته‌بندی جدید
     public function store(Request $request)
     {
         $data = $request->validate([
-            'type' => 'required|in:person,product,service',
-            'name' => 'required|string|max:255',
-            'parent_id' => 'nullable|exists:categories,id',
+            'name' => ['required','string','max:255'],
+            'type' => ['required','in:person,product,service'],
+            'parent_id' => ['nullable','exists:categories,id'],
         ]);
-        $category = Category::create($data);
-        return response()->json($category, 201);
+        Category::create($data);
+        return redirect()->route('categories.index')->with('success', 'دسته‌بندی با موفقیت افزوده شد.');
     }
 
-    // ویرایش دسته‌بندی
+    public function edit(Category $category)
+    {
+        $categories = Category::with('childrenRecursive')
+            ->whereNull('parent_id')
+            ->orderByDesc('id')
+            ->get();
+        return view('categories.index', ['categories' => $categories, 'editCategory' => $category]);
+    }
+
     public function update(Request $request, Category $category)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'parent_id' => 'nullable|exists:categories,id',
+            'name' => ['required','string','max:255'],
+            'type' => ['required','in:person,product,service'],
+            'parent_id' => ['nullable','exists:categories,id'],
         ]);
         $category->update($data);
-        return response()->json($category);
+        return redirect()->route('categories.index')->with('success', 'دسته‌بندی ویرایش شد.');
     }
 
-    // حذف دسته‌بندی
     public function destroy(Category $category)
     {
         $category->delete();
-        return response()->json(['success' => true]);
+        return redirect()->route('categories.index')->with('success', 'دسته‌بندی حذف شد.');
     }
 }

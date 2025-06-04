@@ -20,7 +20,6 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
 
-    // برای نمایش ریشه تا بی‌نهایت زیرشاخه
     public function childrenRecursive(): HasMany
     {
         return $this->children()->with('childrenRecursive');
