@@ -1,4 +1,4 @@
-<nav x-data="{ openMenu: '', collapsed: false }" :class="{'sidebar': true, 'sidebar-collapsed': collapsed }">
+<nav x-data="{ openMenu: '', collapsed: false }" :class="{'sidebar': true, 'sidebar-collapsed': collapsed }" style="background:#fff;color:#222;">
     <!-- Sidebar toggler -->
     <button class="sidebar-toggler" @click="collapsed = !collapsed">
         <i class="fas fa-bars"></i>
@@ -25,7 +25,8 @@
             </div>
         </div>
     </div>
-    <!-- Main Menu -->
+    <!-- Main Menu: Scrollable -->
+    <div style="overflow-y:auto;max-height:calc(100vh - 120px);padding-bottom:10px;">
     <ul class="sidebar-menu">
         <!-- داشبورد -->
         <li class="sidebar-menu-item">
@@ -44,14 +45,14 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'persons'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'persons'" x-transition>
-                <a href="#">شخص جدید</a>
-                <a href="#">اشخاص</a>
-                <a href="#">دریافت</a>
-                <a href="#">لیست دریافت‌ها</a>
-                <a href="#">پرداخت</a>
-                <a href="#">لیست پرداخت‌ها</a>
-                <a href="#">سهامداران</a>
-                <a href="#">فروشندگان</a>
+                <a href="#"><i class="fas fa-user-plus" style="color:#43a047;margin-left:6px;"></i>شخص جدید</a>
+                <a href="#"><i class="fas fa-users" style="color:#1976d2;margin-left:6px;"></i>اشخاص</a>
+                <a href="#"><i class="fas fa-money-bill-wave" style="color:#ff9800;margin-left:6px;"></i>دریافت</a>
+                <a href="#"><i class="fas fa-list" style="color:#607d8b;margin-left:6px;"></i>لیست دریافت‌ها</a>
+                <a href="#"><i class="fas fa-credit-card" style="color:#e91e63;margin-left:6px;"></i>پرداخت</a>
+                <a href="#"><i class="fas fa-list-alt" style="color:#00bcd4;margin-left:6px;"></i>لیست پرداخت‌ها</a>
+                <a href="#"><i class="fas fa-users-cog" style="color:#8e24aa;margin-left:6px;"></i>سهامداران</a>
+                <a href="#"><i class="fas fa-truck" style="color:#ff5722;margin-left:6px;"></i>فروشندگان</a>
             </div>
         </li>
         <!-- کالاها و خدمات -->
@@ -62,15 +63,15 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'products'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'products'" x-transition>
-                <a href="#">کالای جدید</a>
-                <a href="#">خدمات جدید</a>
-                <a href="#">کالاها و خدمات</a>
-                <a href="#">به‌روزرسانی لیست قیمت</a>
-                <a href="#">چاپ بارکد</a>
-                <a href="#">چاپ بارکد تعدادی</a>
-                <a href="#">صفحه لیست قیمت کالا</a>
-                <a href="{{ route('categories.index') }}">دسته‌بندی جدید</a>
-                <a href="{{ route('categories.index') }}">لیست دسته‌بندی‌ها</a>
+                <a href="#"><i class="fas fa-cube" style="color:#43a047;margin-left:6px;"></i>کالای جدید</a>
+                <a href="#"><i class="fas fa-tools" style="color:#ff9800;margin-left:6px;"></i>خدمات جدید</a>
+                <a href="#"><i class="fas fa-cubes" style="color:#3f51b5;margin-left:6px;"></i>کالاها و خدمات</a>
+                <a href="#"><i class="fas fa-sync" style="color:#00bcd4;margin-left:6px;"></i>به‌روزرسانی لیست قیمت</a>
+                <a href="#"><i class="fas fa-barcode" style="color:#8d6e63;margin-left:6px;"></i>چاپ بارکد</a>
+                <a href="#"><i class="fas fa-th-list" style="color:#1976d2;margin-left:6px;"></i>چاپ بارکد تعدادی</a>
+                <a href="#"><i class="fas fa-list" style="color:#009688;margin-left:6px;"></i>صفحه لیست قیمت کالا</a>
+                <a href="{{ route('categories.create') }}"><i class="fas fa-plus" style="color:#43a047;margin-left:6px;"></i>دسته‌بندی جدید</a>
+                <a href="{{ route('categories.index') }}"><i class="fas fa-list-alt" style="color:#ff5722;margin-left:6px;"></i>لیست دسته‌بندی‌ها</a>
             </div>
         </li>
         <!-- بانکداری -->
@@ -81,13 +82,13 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'banking'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'banking'" x-transition>
-                <a href="#">بانک‌ها</a>
-                <a href="#">صندوق‌ها</a>
-                <a href="#">تنخواه‌گردان‌ها</a>
-                <a href="#">انتقال</a>
-                <a href="#">لیست انتقال‌ها</a>
-                <a href="#">لیست چک‌های دریافتی</a>
-                <a href="#">لیست چک‌های پرداختی</a>
+                <a href="#"><i class="fas fa-university" style="color:#00b894;margin-left:6px;"></i>بانک‌ها</a>
+                <a href="#"><i class="fas fa-piggy-bank" style="color:#ff9800;margin-left:6px;"></i>صندوق‌ها</a>
+                <a href="#"><i class="fas fa-people-carry" style="color:#43a047;margin-left:6px;"></i>تنخواه‌گردان‌ها</a>
+                <a href="#"><i class="fas fa-random" style="color:#e91e63;margin-left:6px;"></i>انتقال</a>
+                <a href="#"><i class="fas fa-list" style="color:#1976d2;margin-left:6px;"></i>لیست انتقال‌ها</a>
+                <a href="#"><i class="fas fa-money-check" style="color:#607d8b;margin-left:6px;"></i>لیست چک‌های دریافتی</a>
+                <a href="#"><i class="fas fa-credit-card" style="color:#ff5722;margin-left:6px;"></i>لیست چک‌های پرداختی</a>
             </div>
         </li>
         <!-- فروش و درآمد -->
@@ -98,16 +99,16 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'sales'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'sales'" x-transition>
-                <a href="#">فروش جدید</a>
-                <a href="#">فاکتور سریع</a>
-                <a href="#">برگشت از فروش</a>
-                <a href="#">فاکتورهای فروش</a>
-                <a href="#">فاکتورهای برگشت از فروش</a>
-                <a href="#">درآمد</a>
-                <a href="#">لیست درآمدها</a>
-                <a href="#">قرارداد فروش اقساطی</a>
-                <a href="#">لیست فروش اقساطی</a>
-                <a href="#">اقلام تخفیف‌دار</a>
+                <a href="#"><i class="fas fa-plus" style="color:#43a047;margin-left:6px;"></i>فروش جدید</a>
+                <a href="#"><i class="fas fa-bolt" style="color:#ff9800;margin-left:6px;"></i>فاکتور سریع</a>
+                <a href="#"><i class="fas fa-undo" style="color:#f44336;margin-left:6px;"></i>برگشت از فروش</a>
+                <a href="#"><i class="fas fa-file-invoice-dollar" style="color:#3f51b5;margin-left:6px;"></i>فاکتورهای فروش</a>
+                <a href="#"><i class="fas fa-file-invoice" style="color:#607d8b;margin-left:6px;"></i>فاکتورهای برگشت از فروش</a>
+                <a href="#"><i class="fas fa-coins" style="color:#ffd600;margin-left:6px;"></i>درآمد</a>
+                <a href="#"><i class="fas fa-list" style="color:#00bcd4;margin-left:6px;"></i>لیست درآمدها</a>
+                <a href="#"><i class="fas fa-handshake" style="color:#8e24aa;margin-left:6px;"></i>قرارداد فروش اقساطی</a>
+                <a href="#"><i class="fas fa-list-alt" style="color:#1976d2;margin-left:6px;"></i>لیست فروش اقساطی</a>
+                <a href="#"><i class="fas fa-percent" style="color:#ff5722;margin-left:6px;"></i>اقلام تخفیف‌دار</a>
             </div>
         </li>
         <!-- خرید و هزینه -->
@@ -118,14 +119,14 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'purchase'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'purchase'" x-transition>
-                <a href="#">خرید جدید</a>
-                <a href="#">برگشت از خرید</a>
-                <a href="#">فاکتورهای خرید</a>
-                <a href="#">فاکتورهای برگشت از خرید</a>
-                <a href="#">هزینه</a>
-                <a href="#">لیست هزینه‌ها</a>
-                <a href="#">ضایعات</a>
-                <a href="#">لیست ضایعات</a>
+                <a href="#"><i class="fas fa-plus" style="color:#43a047;margin-left:6px;"></i>خرید جدید</a>
+                <a href="#"><i class="fas fa-undo" style="color:#f44336;margin-left:6px;"></i>برگشت از خرید</a>
+                <a href="#"><i class="fas fa-file-invoice" style="color:#3f51b5;margin-left:6px;"></i>فاکتورهای خرید</a>
+                <a href="#"><i class="fas fa-file-invoice-dollar" style="color:#607d8b;margin-left:6px;"></i>فاکتورهای برگشت از خرید</a>
+                <a href="#"><i class="fas fa-money-bill-wave" style="color:#ffd600;margin-left:6px;"></i>هزینه</a>
+                <a href="#"><i class="fas fa-list" style="color:#00bcd4;margin-left:6px;"></i>لیست هزینه‌ها</a>
+                <a href="#"><i class="fas fa-trash" style="color:#8d6e63;margin-left:6px;"></i>ضایعات</a>
+                <a href="#"><i class="fas fa-list-alt" style="color:#ff5722;margin-left:6px;"></i>لیست ضایعات</a>
             </div>
         </li>
         <!-- انبارداری -->
@@ -136,12 +137,12 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'stock'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'stock'" x-transition>
-                <a href="#">انبارها</a>
-                <a href="#">حواله جدید</a>
-                <a href="#">رسید و حواله‌های انبار</a>
-                <a href="#">موجودی کالا</a>
-                <a href="#">موجودی تمامی انبارها</a>
-                <a href="#">انبارگردانی</a>
+                <a href="#"><i class="fas fa-warehouse" style="color:#00b894;margin-left:6px;"></i>انبارها</a>
+                <a href="#"><i class="fas fa-arrow-right" style="color:#ff9800;margin-left:6px;"></i>حواله جدید</a>
+                <a href="#"><i class="fas fa-file-alt" style="color:#43a047;margin-left:6px;"></i>رسید و حواله‌های انبار</a>
+                <a href="#"><i class="fas fa-box-open" style="color:#e91e63;margin-left:6px;"></i>موجودی کالا</a>
+                <a href="#"><i class="fas fa-list" style="color:#1976d2;margin-left:6px;"></i>موجودی تمامی انبارها</a>
+                <a href="#"><i class="fas fa-balance-scale" style="color:#607d8b;margin-left:6px;"></i>انبارگردانی</a>
             </div>
         </li>
         <!-- حسابداری -->
@@ -152,12 +153,12 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'accounting'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'accounting'" x-transition>
-                <a href="#">سند جدید</a>
-                <a href="#">لیست اسناد</a>
-                <a href="#">تراز افتتاحیه</a>
-                <a href="#">بستن سال مالی</a>
-                <a href="#">جدول حساب‌ها</a>
-                <a href="#">تجمیع اسناد</a>
+                <a href="#"><i class="fas fa-plus" style="color:#43a047;margin-left:6px;"></i>سند جدید</a>
+                <a href="#"><i class="fas fa-file-alt" style="color:#ff9800;margin-left:6px;"></i>لیست اسناد</a>
+                <a href="#"><i class="fas fa-flag" style="color:#3f51b5;margin-left:6px;"></i>تراز افتتاحیه</a>
+                <a href="#"><i class="fas fa-times-circle" style="color:#e91e63;margin-left:6px;"></i>بستن سال مالی</a>
+                <a href="#"><i class="fas fa-table" style="color:#607d8b;margin-left:6px;"></i>جدول حساب‌ها</a>
+                <a href="#"><i class="fas fa-layer-group" style="color:#00bcd4;margin-left:6px;"></i>تجمیع اسناد</a>
             </div>
         </li>
         <!-- سایر -->
@@ -168,17 +169,17 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'other'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'other'" x-transition>
-                <a href="#">آرشیو</a>
-                <a href="#">پنل پیامک</a>
-                <a href="#">استعلام</a>
-                <a href="#">دریافت سایر</a>
-                <a href="#">لیست دریافت‌ها</a>
-                <a href="#">پرداخت سایر</a>
-                <a href="#">لیست پرداخت‌ها</a>
-                <a href="#">سند تسعیر ارز</a>
-                <a href="#">سند توازن اشخاص</a>
-                <a href="#">سند توازن کالاها</a>
-                <a href="#">سند حقوق</a>
+                <a href="#"><i class="fas fa-archive" style="color:#607d8b;margin-left:6px;"></i>آرشیو</a>
+                <a href="#"><i class="fas fa-sms" style="color:#43a047;margin-left:6px;"></i>پنل پیامک</a>
+                <a href="#"><i class="fas fa-search" style="color:#1976d2;margin-left:6px;"></i>استعلام</a>
+                <a href="#"><i class="fas fa-coins" style="color:#ffd600;margin-left:6px;"></i>دریافت سایر</a>
+                <a href="#"><i class="fas fa-list" style="color:#00bcd4;margin-left:6px;"></i>لیست دریافت‌ها</a>
+                <a href="#"><i class="fas fa-credit-card" style="color:#e91e63;margin-left:6px;"></i>پرداخت سایر</a>
+                <a href="#"><i class="fas fa-list-alt" style="color:#ff5722;margin-left:6px;"></i>لیست پرداخت‌ها</a>
+                <a href="#"><i class="fas fa-dollar-sign" style="color:#43a047;margin-left:6px;"></i>سند تسعیر ارز</a>
+                <a href="#"><i class="fas fa-user-friends" style="color:#1976d2;margin-left:6px;"></i>سند توازن اشخاص</a>
+                <a href="#"><i class="fas fa-cube" style="color:#3f51b5;margin-left:6px;"></i>سند توازن کالاها</a>
+                <a href="#"><i class="fas fa-money-check-alt" style="color:#607d8b;margin-left:6px;"></i>سند حقوق</a>
             </div>
         </li>
         <!-- گزارش‌ها -->
@@ -189,26 +190,26 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'reports'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'reports'" x-transition>
-                <a href="#">تمام گزارش‌ها</a>
-                <a href="#">ترازنامه</a>
-                <a href="#">صورت سود و زیان</a>
-                <a href="#">صورتحساب سرمایه</a>
-                <a href="#">دفتر روزنامه</a>
-                <a href="#">دفتر حساب‌ها</a>
-                <a href="#">دفتر کل</a>
-                <a href="#">تراز آزمایشی</a>
-                <a href="#">مرور حساب‌ها</a>
-                <a href="#">مرور حساب‌های تفصیل</a>
-                <a href="#">دفتر روزنامه (تجمیعی)</a>
-                <a href="#">دفتر کل (تجمیعی)</a>
-                <a href="#">بدهکاران و بستانکاران</a>
-                <a href="#">کارت حساب اشخاص</a>
-                <a href="#">فروش به تفکیک کالا</a>
-                <a href="#">خرید به تفکیک کالا</a>
-                <a href="#">فروش به تفکیک فاکتور</a>
-                <a href="#">خرید به تفکیک فاکتور</a>
-                <a href="#">گزارش مالیات</a>
-                <a href="#">سود فاکتور</a>
+                <a href="#"><i class="fas fa-list" style="color:#1976d2;margin-left:6px;"></i>تمام گزارش‌ها</a>
+                <a href="#"><i class="fas fa-balance-scale" style="color:#607d8b;margin-left:6px;"></i>ترازنامه</a>
+                <a href="#"><i class="fas fa-chart-line" style="color:#43a047;margin-left:6px;"></i>صورت سود و زیان</a>
+                <a href="#"><i class="fas fa-receipt" style="color:#ff9800;margin-left:6px;"></i>صورتحساب سرمایه</a>
+                <a href="#"><i class="fas fa-book" style="color:#9c27b0;margin-left:6px;"></i>دفتر روزنامه</a>
+                <a href="#"><i class="fas fa-book-open" style="color:#00bcd4;margin-left:6px;"></i>دفتر حساب‌ها</a>
+                <a href="#"><i class="fas fa-book" style="color:#3f51b5;margin-left:6px;"></i>دفتر کل</a>
+                <a href="#"><i class="fas fa-balance-scale" style="color:#607d8b;margin-left:6px;"></i>تراز آزمایشی</a>
+                <a href="#"><i class="fas fa-search-dollar" style="color:#ffd600;margin-left:6px;"></i>مرور حساب‌ها</a>
+                <a href="#"><i class="fas fa-user-friends" style="color:#8e24aa;margin-left:6px;"></i>مرور حساب‌های تفصیل</a>
+                <a href="#"><i class="fas fa-book" style="color:#00bcd4;margin-left:6px;"></i>دفتر روزنامه (تجمیعی)</a>
+                <a href="#"><i class="fas fa-book-open" style="color:#43a047;margin-left:6px;"></i>دفتر کل (تجمیعی)</a>
+                <a href="#"><i class="fas fa-user-tie" style="color:#1976d2;margin-left:6px;"></i>بدهکاران و بستانکاران</a>
+                <a href="#"><i class="fas fa-id-card" style="color:#ff5722;margin-left:6px;"></i>کارت حساب اشخاص</a>
+                <a href="#"><i class="fas fa-boxes" style="color:#43a047;margin-left:6px;"></i>فروش به تفکیک کالا</a>
+                <a href="#"><i class="fas fa-box" style="color:#607d8b;margin-left:6px;"></i>خرید به تفکیک کالا</a>
+                <a href="#"><i class="fas fa-file-invoice-dollar" style="color:#ffd600;margin-left:6px;"></i>فروش به تفکیک فاکتور</a>
+                <a href="#"><i class="fas fa-file-invoice" style="color:#3f51b5;margin-left:6px;"></i>خرید به تفکیک فاکتور</a>
+                <a href="#"><i class="fas fa-percent" style="color:#e91e63;margin-left:6px;"></i>گزارش مالیات</a>
+                <a href="#"><i class="fas fa-money-bill" style="color:#43a047;margin-left:6px;"></i>سود فاکتور</a>
             </div>
         </li>
         <!-- تنظیمات -->
@@ -219,22 +220,22 @@
                 <span class="sidebar-chevron" :class="{'rotate': openMenu !== 'settings'}"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="sidebar-submenu" x-show="openMenu === 'settings'" x-transition>
-                <a href="#">پروژه‌ها</a>
-                <a href="#">اطلاعات کسب و کار</a>
-                <a href="#">تنظیمات مالی</a>
-                <a href="#">جدول تبدیل نرخ ارز</a>
-                <a href="#">مدیریت کاربران</a>
-                <a href="#">تنظیمات چاپ</a>
+                <a href="#"><i class="fas fa-briefcase" style="color:#fbc02d;margin-left:6px;"></i>پروژه‌ها</a>
+                <a href="#"><i class="fas fa-building" style="color:#0288d1;margin-left:6px;"></i>اطلاعات کسب و کار</a>
+                <a href="#"><i class="fas fa-money-check-alt" style="color:#43a047;margin-left:6px;"></i>تنظیمات مالی</a>
+                <a href="#"><i class="fas fa-dollar-sign" style="color:#ffd600;margin-left:6px;"></i>جدول تبدیل نرخ ارز</a>
+                <a href="#"><i class="fas fa-users-cog" style="color:#00bcd4;margin-left:6px;"></i>مدیریت کاربران</a>
+                <a href="#"><i class="fas fa-print" style="color:#607d8b;margin-left:6px;"></i>تنظیمات چاپ</a>
                 <a href="{{ route('color.settings') }}">
                     <svg width="20" height="20" viewBox="0 0 20 20" style="vertical-align:middle;margin-left:8px;">
                         <circle cx="10" cy="10" r="9" fill="#00e676" stroke="#00c853" stroke-width="2"/>
                         <circle cx="10" cy="10" r="5" fill="#FFD600"/>
-                    </svg>
-                    تنظیمات ظاهری
+                    </svg> تنظیمات ظاهری
                 </a>
-                <a href="#">فرم ساز</a>
-                <a href="#">اعلانات</a>
+                <a href="#"><i class="fas fa-wpforms" style="color:#ff7043;margin-left:6px;"></i>فرم ساز</a>
+                <a href="#"><i class="fas fa-bell" style="color:#c62828;margin-left:6px;"></i>اعلانات</a>
             </div>
         </li>
     </ul>
+    </div>
 </nav>

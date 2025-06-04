@@ -1,0 +1,21 @@
+.tab-btn {
+    @apply px-6 py-2 font-bold rounded-t transition-all duration-200 border-b-2 border-transparent bg-gray-100 text-gray-700;
+}
+.tab-active {
+    @apply border-yellow-400 bg-yellow-50 text-yellow-700;
+}
+.tab-inactive {
+    @apply border-gray-200 bg-white text-gray-500;
+}
+.tabs {
+    border-bottom: 1px solid #f5e9a7;
+}
+input[type="file"] {
+    direction: ltr;
+}
+#preview-image img {
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 8px;
+    margin-top: 8px;
+}

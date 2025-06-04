@@ -3,25 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Category extends Model
 {
-    protected $fillable = ['name', 'type', 'parent_id'];
+    protected $fillable = [
+        'name',
+        'type',
+        'parent_id',
+        'image',
+        'description',
+        'full_description',
+        'created_at',
+    ];
 
-    public function parent(): BelongsTo
+    public $timestamps = false;
+
+    public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
-
-    public function children(): HasMany
+    public function children()
     {
         return $this->hasMany(Category::class, 'parent_id');
-    }
-
-    public function childrenRecursive(): HasMany
-    {
-        return $this->children()->with('childrenRecursive');
     }
 }

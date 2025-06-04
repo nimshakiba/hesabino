@@ -7,46 +7,62 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    // لیست دسته‌بندی‌ها
     public function index()
     {
-        $categories = Category::with('childrenRecursive')
-            ->whereNull('parent_id')
-            ->orderByDesc('id')
-            ->get();
+        $categories = Category::with(['children', 'parent'])->get();
         return view('categories.index', compact('categories'));
     }
 
+    // نمایش فرم ساخت دسته‌بندی
+    public function create()
+    {
+        $categories = Category::all();
+        return view('categories.create', compact('categories'));
+    }
+
+    // ذخیره دسته‌بندی جدید
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => ['required','string','max:255'],
-            'type' => ['required','in:person,product,service'],
-            'parent_id' => ['nullable','exists:categories,id'],
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'type' => 'required|in:person,product,service',
+            'parent_id' => 'nullable|exists:categories,id',
+            'description' => 'nullable|string|max:255',
+            'full_description' => 'nullable|string',
+            'created_at' => 'required|date',
+            'image' => 'nullable|image|max:2048',
         ]);
-        Category::create($data);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('categories', 'public');
+        }
+
+        Category::create($validated);
+
         return redirect()->route('categories.index')->with('success', 'دسته‌بندی با موفقیت افزوده شد.');
     }
 
+    // نمایش فرم ویرایش دسته‌بندی
     public function edit(Category $category)
     {
-        $categories = Category::with('childrenRecursive')
-            ->whereNull('parent_id')
-            ->orderByDesc('id')
-            ->get();
-        return view('categories.index', ['categories' => $categories, 'editCategory' => $category]);
+        $categories = Category::where('id', '!=', $category->id)->get();
+        return view('categories.edit', compact('category', 'categories'));
     }
 
+    // ذخیره ویرایش دسته‌بندی
     public function update(Request $request, Category $category)
     {
-        $data = $request->validate([
-            'name' => ['required','string','max:255'],
-            'type' => ['required','in:person,product,service'],
-            'parent_id' => ['nullable','exists:categories,id'],
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'type' => 'required|in:person,product,service',
+            'parent_id' => 'nullable|exists:categories,id',
         ]);
-        $category->update($data);
-        return redirect()->route('categories.index')->with('success', 'دسته‌بندی ویرایش شد.');
+        $category->update($validated);
+        return redirect()->route('categories.index')->with('success', 'دسته‌بندی با موفقیت ویرایش شد.');
     }
 
+    // حذف دسته‌بندی
     public function destroy(Category $category)
     {
         $category->delete();

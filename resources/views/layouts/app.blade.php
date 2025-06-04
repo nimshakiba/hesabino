@@ -5,11 +5,12 @@
     <title>{{ $title ?? 'حسابینو' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('/css/color-palette.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/color-palette.css') }}">
     <script src="https://unpkg.com/alpinejs" defer></script>
-    <script src="{{ asset('js/color-palette.js') }}"></script>
+    <script src="{{ asset('assets/js/color-palette.js') }}"></script>
     <style>
         body { font-family: Vazirmatn, Tahoma, Arial, sans-serif; background: var(--main-bg, #f4f6f8); }
         .sidebar { width: 265px; background: var(--sidebar-bg, #2d3a4b); color: var(--sidebar-text, #fff); height: 100vh; position: fixed; right: 0; top: 0; z-index: 50; transition: width 0.2s, background 0.3s, color 0.3s; }
