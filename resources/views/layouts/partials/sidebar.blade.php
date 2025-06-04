@@ -67,6 +67,8 @@
                 <a href="#">چاپ بارکد</a>
                 <a href="#">چاپ بارکد تعدادی</a>
                 <a href="#">صفحه لیست قیمت کالا</a>
+                <a href="{{ route('categories.index') }}">دسته‌بندی جدید</a>
+                <a href="{{ route('categories.index') }}">لیست دسته‌بندی‌ها</a>
             </div>
         </li>
         <!-- بانکداری -->

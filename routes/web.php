@@ -51,4 +51,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
         // سایر روت‌های مدیریتی...
     });
+
+    // دسته بندی
+    Route::view('/categories', 'categories.index')->name('categories.index');
 });
