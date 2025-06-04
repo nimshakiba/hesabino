@@ -3,10 +3,10 @@
 @section('title', 'مدیریت دسته‌بندی‌ها')
 
 @section('content')
-<div class="container mx-auto py-8 max-w-2xl">
+<div class="container mx-auto py-8 max-w-3xl">
     <div class="bg-white p-6 rounded-xl shadow-md mb-8">
-        <h2 class="text-xl font-bold mb-4">افزودن دسته‌بندی جدید</h2>
-        <form method="POST" action="{{ isset($editCategory) ? route('categories.update', $editCategory) : route('categories.store') }}" class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold mb-4">{{ isset($editCategory) ? 'ویرایش دسته‌بندی' : 'افزودن دسته‌بندی جدید' }}</h2>
+        <form method="POST" action="{{ isset($editCategory) ? route('categories.update', $editCategory) : route('categories.store') }}" class="flex flex-col gap-4" id="categoryForm">
             @csrf
             @if(isset($editCategory))
                 @method('PUT')

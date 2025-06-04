@@ -30,7 +30,9 @@
         <!-- داشبورد -->
         <li class="sidebar-menu-item">
             <a href="{{ route('dashboard') }}" class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                <span class="sidebar-icon" style="color:#ffd600;"><i class="fas fa-tachometer-alt"></i></span>
+                <span class="sidebar-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#FFD600"/><path d="M12 7V17M7 12H17" stroke="#222" stroke-width="2" stroke-linecap="round"/></svg>
+                </span>
                 <span>داشبورد</span>
             </a>
         </li>
@@ -223,6 +225,13 @@
                 <a href="#">جدول تبدیل نرخ ارز</a>
                 <a href="#">مدیریت کاربران</a>
                 <a href="#">تنظیمات چاپ</a>
+                <a href="{{ route('color.settings') }}">
+                    <svg width="20" height="20" viewBox="0 0 20 20" style="vertical-align:middle;margin-left:8px;">
+                        <circle cx="10" cy="10" r="9" fill="#00e676" stroke="#00c853" stroke-width="2"/>
+                        <circle cx="10" cy="10" r="5" fill="#FFD600"/>
+                    </svg>
+                    تنظیمات ظاهری
+                </a>
                 <a href="#">فرم ساز</a>
                 <a href="#">اعلانات</a>
             </div>

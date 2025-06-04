@@ -5,7 +5,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\PersonCategoryController;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,3 +56,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('categories', CategoryController::class);
+
+Route::get('/settings/colors', function() {
+    return view('settings.color');
+})->name('color.settings');
