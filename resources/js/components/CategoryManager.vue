@@ -115,7 +115,6 @@ async function deleteCategory(cat) {
 onMounted(fetchCategories);
 watch(selectedType, fetchCategories);
 
-// Component for recursive category tree
 const CategoryTree = {
     props: ['categories'],
     emits: ['edit', 'delete'],

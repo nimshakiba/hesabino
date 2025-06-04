@@ -53,5 +53,8 @@ Route::middleware('auth')->group(function () {
     });
 
     // دسته بندی
+});
+
+Route::middleware(['auth'])->group(function () {
     Route::view('/categories', 'categories.index')->name('categories.index');
 });
