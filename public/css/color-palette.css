@@ -1,119 +1,136 @@
 :root {
-    --main-bg: #f8fafc;
+    --main-bg: #f4f6f8;
     --main-text: #222;
-    --main-accent: #ffd600;
-    --main-header: #fffbe6;
-    --sidebar-bg: #fff;
-    --sidebar-active: #ffd600;
-    --sidebar-text: #2d3a4b;
-    --btn-color: #ffd600;
+    --sidebar-bg: #2d3a4b;
+    --sidebar-text: #fff;
+    --menu-active-bg: #21304a;
+    --btn-bg: #ffd600;
     --btn-text: #222;
+    --input-bg: #fff;
+    --input-border: #e0e0e0;
+    --card-bg: #fff;
 }
-/* تم روشن */
 [data-theme="light"] {
-    --main-bg: #f8fafc;
+    --main-bg: #f4f6f8;
     --main-text: #222;
-    --main-accent: #ffd600;
-    --main-header: #fffbe6;
-    --sidebar-bg: #fff;
-    --sidebar-active: #ffd600;
-    --sidebar-text: #2d3a4b;
-    --btn-color: #ffd600;
+    --sidebar-bg: #2d3a4b;
+    --sidebar-text: #fff;
+    --menu-active-bg: #21304a;
+    --btn-bg: #ffd600;
     --btn-text: #222;
+    --input-bg: #fff;
+    --input-border: #e0e0e0;
+    --card-bg: #fff;
 }
-/* تم سبز */
-[data-theme="green"] {
-    --main-bg: #f3fff5;
-    --main-text: #1b3831;
-    --main-accent: #00e676;
-    --main-header: #e8f5e9;
-    --sidebar-bg: #e0f2f1;
-    --sidebar-active: #00e676;
-    --sidebar-text: #00695c;
-    --btn-color: #00e676;
-    --btn-text: #085e37;
-}
-/* تم تیره */
 [data-theme="dark"] {
-    --main-bg: #252932;
-    --main-text: #f0f2f7;
-    --main-accent: #ffd600;
-    --main-header: #23252c;
-    --sidebar-bg: #191a1d;
-    --sidebar-active: #ffd600;
-    --sidebar-text: #f0f2f7;
-    --btn-color: #ffd600;
-    --btn-text: #222;
+    --main-bg: #24292f;
+    --main-text: #e7eaf0;
+    --sidebar-bg: #1c2128;
+    --sidebar-text: #c9d1d9;
+    --menu-active-bg: #2d333b;
+    --btn-bg: #4582ec;
+    --btn-text: #fff;
+    --input-bg: #22272e;
+    --input-border: #444c56;
+    --card-bg: #22272e;
 }
 
+/* ----- Global ----- */
 body {
     background: var(--main-bg) !important;
     color: var(--main-text) !important;
-    transition: background .3s;
+    transition: background .3s, color .3s;
 }
-.bg-white, .main-header, .category-form-card, .category-list-card {
-    background: var(--main-header) !important;
-}
-
-.sidebar, .sidebar-menu {
-    background: var(--sidebar-bg) !important;
-    color: var(--sidebar-text) !important;
-}
-.sidebar-link.active, .sidebar-link:hover {
-    background: var(--sidebar-active) !important;
+.main-content {
+    background: var(--main-bg) !important;
     color: var(--main-text) !important;
+    transition: background .3s, color .3s;
 }
-button, .btn, .form-actions button {
-    background: var(--btn-color) !important;
-    color: var(--btn-text) !important;
-}
-a, .text-link { color: var(--main-accent); }
+a, .text-link { color: var(--btn-bg); }
 a:hover { color: #e3b800; }
 
-/* هدر رنگ‌بندی */
-.color-header {
-    background: var(--main-header);
-    border-bottom: 2.5px solid var(--main-accent);
-    transition: background .3s;
-    z-index: 30;
-    position: sticky;
-    top: 0;
+/* ----- Sidebar ----- */
+.sidebar {
+    background: var(--sidebar-bg) !important;
+    color: var(--sidebar-text) !important;
+    transition: background .3s, color .3s;
 }
-.theme-switcher {
+.sidebar-link,
+.sidebar-icon,
+.sidebar-header,
+.sidebar-profile-name,
+.sidebar-profile-email {
+    color: var(--sidebar-text) !important;
+    transition: color .3s;
+}
+.sidebar-link.active, .sidebar-link:hover {
+    background: var(--menu-active-bg) !important;
+    color: var(--main-text) !important;
+}
+.sidebar-submenu { background: var(--menu-active-bg) !important; }
+.sidebar-submenu a { color: var(--sidebar-text); }
+.sidebar-submenu a:hover { color: var(--btn-bg); }
+
+/* ----- Cards, Forms, Inputs ----- */
+.bg-white, .card, .category-form-card, .category-list-card {
+    background: var(--card-bg) !important;
+    color: var(--main-text) !important;
+    transition: background .3s, color .3s;
+}
+input, select, textarea {
+    background: var(--input-bg) !important;
+    color: var(--main-text) !important;
+    border-color: var(--input-border) !important;
+    transition: background .3s, color .3s, border-color .3s;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--btn-bg) !important;
+}
+
+/* ----- Buttons ----- */
+button, .btn, .form-actions button {
+    background: var(--btn-bg) !important;
+    color: var(--btn-text) !important;
     border: none;
-    background: none;
-    outline: none;
-    cursor: pointer;
-    padding: 0 3px;
-    transition: filter .2s;
-    display: inline-flex;
-    align-items: center;
+    transition: background .3s, color .3s;
 }
-.theme-switcher .theme-icon {
+button:hover, .btn:hover, .form-actions button:hover {
+    filter: brightness(1.1);
+}
+
+/* ---- Messages ----- */
+.bg-green-100, .bg-red-100 {
+    color: var(--main-text) !important;
+}
+
+/* ----- Custom classes for theme switch test UI (see below) ----- */
+.theme-palette-preview {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    box-shadow: 0 2px 14px #0001;
-    transition: box-shadow .3s, background .3s;
-    background: #fff;
-    border: 2.5px solid transparent;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 18px 0 0 0;
 }
-.theme-switcher.selected .theme-icon,
-.theme-switcher:focus .theme-icon,
-.theme-switcher:active .theme-icon {
-    border-color: var(--main-accent);
-    background: var(--main-accent);
-    box-shadow: 0 2px 18px #ffd60055;
+.theme-palette-box {
+    border-radius: 10px;
+    padding: 18px 22px 12px 22px;
+    background: var(--card-bg);
+    color: var(--main-text);
+    box-shadow: 0 2px 16px #0001;
+    min-width: 200px;
+    min-height: 110px;
 }
-.theme-switcher[data-theme="light"].selected .theme-icon svg circle {
-    filter: drop-shadow(0 0 6px #ffd600);
+.theme-palette-title {
+    font-size: 1.12rem;
+    font-weight: bold;
+    margin-bottom: 12px;
 }
-.theme-switcher[data-theme="dark"].selected .theme-icon svg path {
-    filter: drop-shadow(0 0 8px #ffd60096);
-}
-.theme-switcher[data-theme="green"].selected .theme-icon svg path {
-    filter: drop-shadow(0 0 6px #00e676);
+.theme-palette-sample-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 7px 20px;
+    border-radius: 7px;
+    border: none;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: .97rem;
 }
