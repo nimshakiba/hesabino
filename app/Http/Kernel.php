@@ -26,5 +26,7 @@ class Kernel extends HttpKernel
         'tenant.db' => \App\Http\Middleware\SwitchTenantDatabase::class,
         'switchTenantDatabase' => \App\Http\Middleware\SwitchTenantDatabase::class,
         'check.business' => \App\Http\Middleware\CheckBusiness::class,
-    ];
+ ];
+ 
 }
+
