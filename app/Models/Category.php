@@ -14,6 +14,7 @@ class Category extends Model
         'description',
         'full_description',
         'created_at',
+        'color',
     ];
 
     public $timestamps = false;
