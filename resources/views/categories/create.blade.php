@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('assets/css/category-create.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/mds.bs.datetimepicker.style.css') }}" rel="stylesheet">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -343,4 +343,5 @@
 <script src="{{ asset('assets/js/mds.bs.datetimepicker.js') }}"></script>
     <script src="{{ asset('assets/js/category-create.js') }}"></script>
     <script src="{{ asset('assets/js/category-date.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 @endsection
