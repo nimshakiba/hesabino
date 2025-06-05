@@ -3,12 +3,19 @@
 @section('title', 'افزودن دسته‌بندی جدید')
 
 @section('head')
-    <link rel="stylesheet" href="{{ asset('assets/fonts/fonts.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.3/dist/full.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/css/category-create.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/mds.bs.datetimepicker.style.css') }}" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.3/dist/full.min.css" rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!-- دسته‌بندی اختصاصی -->
+    <link href="{{ asset('assets/fonts/fonts.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/category-create.css') }}" rel="stylesheet">
+    <!-- استایل تاریخ‌شمسی -->
+    <link href="{{ asset('assets/css/mds.bs.datetimepicker.style.css') }}" rel="stylesheet">
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 @endsection
 
 @section('content')
@@ -24,7 +31,10 @@
                 imgPreview: { person: null, product: null, service: null },
                 imgDefault: '{{ asset('assets/images/default-category.png') }}',
                 tabColors: {person: '#6366f1', product: '#f59e42', service: '#22c55e'},
-                handleTab(newTab) { this.tab = newTab },
+                handleTab(newTab) {
+                    this.tab = newTab;
+                    setTimeout(initPersianDatePickers, 100);
+                },
                 handleImage(e, which) {
                     const file = e.target.files[0];
                     if (file) {
@@ -337,11 +347,56 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-
-<script src="{{ asset('assets/js/moment-jalaali.js') }}"></script>
-<script src="{{ asset('assets/js/mds.bs.datetimepicker.js') }}"></script>
-    <script src="{{ asset('assets/js/category-create.js') }}"></script>
-    <script src="{{ asset('assets/js/category-date.js') }}"></script>
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <!-- moment-jalaali -->
+    <script src="{{ asset('assets/js/moment-jalaali.js') }}"></script>
+    <!-- Persian Date Picker -->
+    <script src="{{ asset('assets/js/mds.bs.datetimepicker.js') }}"></script>
+    <!-- اسکریپت فعالسازی انتخابگر تاریخ شمسی -->
+    <script>
+        function initPersianDatePickers() {
+            // اشخاص
+            if (document.getElementById('created_at_display_person') && !document.getElementById('created_at_display_person').dataset.pickerInit) {
+                new mds.MdsPersianDateTimePicker(document.getElementById('created_at_display_person'), {
+                    targetTextSelector: '#created_at_display_person',
+                    targetDateSelector: '#created_at_person',
+                    enableTimePicker: false,
+                    englishNumber: true,
+                    textFormat: 'yyyy/MM/dd',
+                    dateFormat: 'yyyy-MM-dd',
+                });
+                document.getElementById('created_at_display_person').dataset.pickerInit = "1";
+            }
+            // کالا
+            if (document.getElementById('created_at_display_product') && !document.getElementById('created_at_display_product').dataset.pickerInit) {
+                new mds.MdsPersianDateTimePicker(document.getElementById('created_at_display_product'), {
+                    targetTextSelector: '#created_at_display_product',
+                    targetDateSelector: '#created_at_product',
+                    enableTimePicker: false,
+                    englishNumber: true,
+                    textFormat: 'yyyy/MM/dd',
+                    dateFormat: 'yyyy-MM-dd',
+                });
+                document.getElementById('created_at_display_product').dataset.pickerInit = "1";
+            }
+            // خدمات
+            if (document.getElementById('created_at_display_service') && !document.getElementById('created_at_display_service').dataset.pickerInit) {
+                new mds.MdsPersianDateTimePicker(document.getElementById('created_at_display_service'), {
+                    targetTextSelector: '#created_at_display_service',
+                    targetDateSelector: '#created_at_service',
+                    enableTimePicker: false,
+                    englishNumber: true,
+                    textFormat: 'yyyy/MM/dd',
+                    dateFormat: 'yyyy-MM-dd',
+                });
+                document.getElementById('created_at_display_service').dataset.pickerInit = "1";
+            }
+        }
+        document.addEventListener('DOMContentLoaded', initPersianDatePickers);
+    </script>
+    <!-- سایر اسکریپت‌های اختصاصی (در صورت نیاز) -->
+    <script src="{{ asset('assets/js/category-create.js') }}"></script>
 @endsection

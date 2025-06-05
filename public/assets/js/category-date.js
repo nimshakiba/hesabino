@@ -40,11 +40,11 @@ function initPersianDatePickers() {
 // اجرا در ابتدا
 document.addEventListener('DOMContentLoaded', initPersianDatePickers);
 
-// اجرا در هر بار تغییر تب (Alpine.js)
+// اجرا بعد از هر تغییر تب (در handleTab)
 document.addEventListener('alpine:init', () => {
     Alpine.data('categoryTabs', () => ({
         tab: 'person',
-        ... // سایر پراپرتی‌ها
+        // ... سایر پراپرتی‌ها
         handleTab(newTab) {
             this.tab = newTab;
             setTimeout(initPersianDatePickers, 100); // کمی تاخیر برای اینکه input تو DOM اضافه شود
