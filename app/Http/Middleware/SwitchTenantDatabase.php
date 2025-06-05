@@ -10,6 +10,7 @@ class SwitchTenantDatabase
 {
     public function handle($request, Closure $next)
     {
+        // مقدار current_business_id باید در session ذخیره شود (مثلاً بعد از انتخاب کسب‌وکار)
         $businessId = session('current_business_id');
         if (!$businessId) {
             abort(403, 'هیچ کسب‌وکاری انتخاب نشده است');
@@ -17,6 +18,7 @@ class SwitchTenantDatabase
 
         $business = Business::findOrFail($businessId);
 
+        // تنظیم داینامیک کانکشن tenant
         Config::set('database.connections.tenant', [
             'driver' => 'mysql',
             'host' => config('database.connections.mysql.host'),
