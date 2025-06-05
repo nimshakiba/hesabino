@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use App\Models\Business;
 
@@ -13,7 +12,6 @@ class SwitchTenantDatabase
     {
         $businessId = session('current_business_id');
         if (!$businessId) {
-            // ارور یا ریدایرکت به انتخاب کسب‌وکار
             abort(403, 'هیچ کسب‌وکاری انتخاب نشده است');
         }
 
@@ -30,7 +28,6 @@ class SwitchTenantDatabase
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
         ]);
-        // تنظیم کانکشن پیش‌فرض
         \DB::setDefaultConnection('tenant');
 
         return $next($request);
