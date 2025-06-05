@@ -6,66 +6,40 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\PersonCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CategoryController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application.
-|
-*/
-// صفحه پروفایل
+
 Route::middleware('auth')->get('/profile', function () {
     return view('profile');
 })->name('profile.edit');
 
-// صفحه فرود
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
-// احراز هویت لاراول
 require __DIR__.'/auth.php';
 
-// داشبورد (صفحه خانه برای کاربران عادی)
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
-    // اشخاص
     Route::get('/persons', [PersonController::class, 'index'])->name('persons.index');
     Route::get('/persons/create', [PersonController::class, 'create'])->name('persons.create');
     Route::post('/persons', [PersonController::class, 'store'])->name('persons.store');
     Route::post('/persons/{person}/toggle-active', [PersonController::class, 'toggleActive'])->name('persons.toggle-active');
 
-    // AJAX: دریافت دسته‌بندی‌های اشخاص
     Route::get('/ajax/person-categories', [PersonCategoryController::class, 'listAjax'])->name('ajax.person_categories');
 
-    // روت‌های ادمین فقط برای مدیرکل
     Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
-        // داشبورد مدیرکل
         Route::get('/dashboard', function () {
             return view('admin.dashboard');
         })->name('dashboard');
-
-        // مدیریت کاربران (نمونه)
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
-        // سایر روت‌های مدیریتی...
     });
-
-    // دسته بندی
 });
-
 
 Route::get('/settings/colors', function() {
     return view('settings.color');
 })->name('color.settings');
+
+// فقط اینجا تعریف resource دسته‌بندی را داری
 Route::middleware(['auth', 'tenant.db'])->group(function () {
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
-    // سایر routeهای tenant را هم همینجا اضافه کن
 });
-
-Route::post('/switch-business', [App\Http\Controllers\BusinessSwitcherController::class, 'switch'])
-    ->middleware(['auth'])->name('switch-business');
-
-
-
