@@ -10,7 +10,7 @@ class CategoryController extends Controller
     // لیست دسته‌بندی‌ها
     public function index()
     {
-        $categories = Category::with(['children', 'parent'])->get();
+        $categories = Category::all();
         return view('categories.index', compact('categories'));
     }
 
@@ -24,6 +24,7 @@ class CategoryController extends Controller
     // ذخیره دسته‌بندی جدید
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|in:person,product,service',
@@ -38,6 +39,7 @@ class CategoryController extends Controller
             $validated['image'] = $request->file('image')->store('categories', 'public');
         }
 
+        $request->validate(['name'=>'required']);
         Category::create($validated);
 
         return redirect()->route('categories.index')->with('success', 'دسته‌بندی با موفقیت افزوده شد.');

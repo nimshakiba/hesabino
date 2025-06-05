@@ -22,6 +22,6 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         // ...
-        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'tenant.db' => \App\Http\Middleware\SwitchTenantDatabase::class,
     ];
 }

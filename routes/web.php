@@ -60,3 +60,7 @@ Route::resource('categories', CategoryController::class);
 Route::get('/settings/colors', function() {
     return view('settings.color');
 })->name('color.settings');
+
+Route::middleware(['auth', 'tenant.db'])->group(function () {
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
+});
