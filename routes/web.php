@@ -55,14 +55,17 @@ Route::middleware('auth')->group(function () {
     // دسته بندی
 });
 
-Route::resource('categories', CategoryController::class);
 
 Route::get('/settings/colors', function() {
     return view('settings.color');
 })->name('color.settings');
-
 Route::middleware(['auth', 'tenant.db'])->group(function () {
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
+    // سایر routeهای tenant را هم همینجا اضافه کن
 });
+
 Route::post('/switch-business', [App\Http\Controllers\BusinessSwitcherController::class, 'switch'])
     ->middleware(['auth'])->name('switch-business');
+
+
+
