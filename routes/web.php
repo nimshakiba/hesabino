@@ -9,23 +9,22 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Middleware\SwitchTenantDatabase;
 use App\Http\Controllers\BusinessController;
 
-// صفحه فرود و auth
+// صفحه فرود
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 require __DIR__.'/auth.php';
 
-// ثبت کسب‌وکار
+// ثبت کسب‌وکار (بیرون از گروه اصلی)
 Route::middleware(['auth'])->group(function () {
     Route::get('/business/create', [BusinessController::class, 'create'])->name('business.create');
     Route::post('/business', [BusinessController::class, 'store'])->name('business.store');
 });
 
-// فقط یک گروه برای همه routeهای نیازمند کسب‌وکار
+// گروه اصلی
 Route::middleware(['auth', 'check.business'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
-    // سایر routeها
     Route::get('/persons', [PersonController::class, 'index'])->name('persons.index');
     Route::get('/persons/create', [PersonController::class, 'create'])->name('persons.create');
     Route::post('/persons', [PersonController::class, 'store'])->name('persons.store');
