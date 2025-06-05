@@ -134,3 +134,68 @@ body, h1, h2, h3, h4, h5, h6, input, button, label, textarea, select {
         padding: 0.4rem 0.7rem 0.6rem 0.7rem;
     }
 }
+.category-tabs-custom {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 0;
+    background: transparent;
+}
+.category-tab-btn {
+    padding: 0.7rem 2.1rem 0.9rem 2.1rem;
+    background: var(--tab-bg, #f6f6f8);
+    color: var(--tab-color, #7b7b7b);
+    font-weight: 700;
+    font-size: 1.08rem;
+    border: none;
+    outline: none;
+    border-radius: 1.3rem 1.3rem 0 0;
+    position: relative;
+    top: 0;
+    transition: background 0.16s, color 0.16s, box-shadow 0.14s;
+    box-shadow: 0 2px 8px #0000000e;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    border-bottom: none;
+}
+.category-tab-btn.active,
+.category-tab-btn[aria-current="true"] {
+    background: var(--tab-active-bg, #fff);
+    color: var(--tab-active-color, #222);
+    box-shadow: 0 5px 20px #0001;
+    z-index: 3;
+}
+.category-tab-btn i {
+    font-size: 1.25rem;
+}
+.tab-img-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px !important;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+.tab-img-circle {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    border: 3px solid var(--tab-color, #6366f1);
+    background: #fff;
+    box-shadow: 0 4px 18px #0002;
+    object-fit: cover;
+}
+.card.bg-base-100 {
+    font-family: 'AnjomanMax', Arial, Tahoma, sans-serif;
+}
+.input, .textarea, .select, .file-input {
+    font-family: 'AnjomanMax', Arial, Tahoma, sans-serif;
+}
+@media (max-width:600px) {
+    .tab-img-circle { width: 64px; height: 64px; }
+    .category-tab-btn { font-size: 0.97rem; padding: 0.4rem 0.7rem 0.6rem 0.7rem;}
+}

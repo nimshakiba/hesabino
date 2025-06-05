@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.3/dist/full.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('assets/css/category-create.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/md.bootstrappersiandatetimepicker/dist/jquery.md.bootstrap.datetimepicker.style.css">
 @endsection
 
 @section('content')
@@ -24,6 +25,7 @@
                 <button type="button"
                     :class="tab === 'person' ? 'category-tab-btn active' : 'category-tab-btn'"
                     @click="changeTab('person')"
+                    id="tab-person"
                 >
                     <i class="fas fa-users" :style="`color: ${tabColors.person}`"></i>
                     اشخاص
@@ -31,6 +33,7 @@
                 <button type="button"
                     :class="tab === 'product' ? 'category-tab-btn active' : 'category-tab-btn'"
                     @click="changeTab('product')"
+                    id="tab-product"
                 >
                     <i class="fas fa-box" :style="`color: ${tabColors.product}`"></i>
                     کالا
@@ -38,12 +41,13 @@
                 <button type="button"
                     :class="tab === 'service' ? 'category-tab-btn active' : 'category-tab-btn'"
                     @click="changeTab('service')"
+                    id="tab-service"
                 >
                     <i class="fas fa-tools" :style="`color: ${tabColors.service}`"></i>
                     خدمات
                 </button>
             </div>
-            <div class="tab-img-preview">
+            <div class="tab-img-preview" style="margin-top:50px">
                 <img :src="imgPreview || imgDefault" class="tab-img-circle" alt="preview">
             </div>
             <div class="text-center mb-2 font-bold text-base" x-text="'دسته‌بندی ' + tabLabel"></div>
@@ -140,5 +144,9 @@
 
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/@alireza-ab/jalali-moment/dist/jalali-moment.browser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/md.bootstrappersiandatetimepicker/dist/jquery.md.bootstrap.datetimepicker.js"></script>
     <script src="{{ asset('assets/js/category-create.js') }}"></script>
+    <script src="{{ asset('assets/js/category-tabs.js') }}"></script>
+    <script src="{{ asset('assets/js/category-date.js') }}"></script>
 @endsection
