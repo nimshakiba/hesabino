@@ -24,5 +24,6 @@ class Kernel extends HttpKernel
         // ...
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'tenant.db' => \App\Http\Middleware\SwitchTenantDatabase::class,
+        'switchTenantDatabase' => \App\Http\Middleware\SwitchTenantDatabase::class,
     ];
 }

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +12,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind('tenant.db', function ($app) {
+            return DB::connection('tenant');
+        });
     }
 
     /**
@@ -21,4 +24,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
+
 }

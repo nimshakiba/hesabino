@@ -43,3 +43,7 @@ Route::get('/settings/colors', function() {
 Route::middleware(['auth', 'tenant.db'])->group(function () {
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
 });
+Route::middleware(['auth', 'switchTenantDatabase'])->group(function () {
+    Route::resource('categories', CategoryController::class);
+    // سایر routeهای tenant
+});
