@@ -64,3 +64,5 @@ Route::get('/settings/colors', function() {
 Route::middleware(['auth', 'tenant.db'])->group(function () {
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
 });
+Route::post('/switch-business', [App\Http\Controllers\BusinessSwitcherController::class, 'switch'])
+    ->middleware(['auth'])->name('switch-business');

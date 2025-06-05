@@ -10,20 +10,16 @@ class BusinessService
 {
     public static function createBusiness($user, $name)
     {
-        // ساخت نام دیتابیس یکتا
         $dbName = 'business_' . strtolower($user->id) . '_' . time();
 
-        // ایجاد دیتابیس جدید
         DB::statement("CREATE DATABASE `$dbName` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
 
-        // ثبت کسب‌وکار در دیتابیس اصلی
         $business = Business::create([
             'user_id' => $user->id,
             'name' => $name,
             'database_name' => $dbName,
         ]);
 
-        // ساخت کانکشن موقت tenant
         config([
             "database.connections.tenant" => [
                 'driver' => 'mysql',
@@ -38,7 +34,6 @@ class BusinessService
             ]
         ]);
 
-        // اجرای مایگریشن جداول tenant
         Artisan::call('migrate', [
             '--database' => 'tenant',
             '--path' => '/database/migrations/tenant',
