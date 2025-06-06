@@ -15,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('tenant.db', function ($app) {
             return DB::connection('tenant');
         });
+        $this->app->bind('check.business', function ($app) {
+            return new CheckBusiness();
+        });
     }
 
     /**
